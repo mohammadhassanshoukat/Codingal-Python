@@ -7,7 +7,7 @@ print(10)
 
 
 #print both numbers and text
-print("hassan",12)
+print("penguin",12)
 
 
 #print an empty line before/after a sentence
