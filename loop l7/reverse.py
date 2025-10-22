@@ -9,3 +9,4 @@ for i in string:
 
 print("\nThe orignal string is:",string)
 print("\nThe reversed string is :",string2)
+
