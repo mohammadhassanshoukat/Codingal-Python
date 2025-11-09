@@ -11,9 +11,7 @@ except ValueError:
     print("Please enter a numrical number")
 except NameError as ex:
     print("The expection is ",ex)
-
-
-except:
+    except:
     print("some error ocurred")
 finally:
     print("I will execute no matter what happens")
