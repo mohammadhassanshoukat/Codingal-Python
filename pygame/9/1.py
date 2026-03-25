@@ -10,7 +10,7 @@ l = tk.Label(root, text="This is root window")
 top = tk.Toplevel()
 top.geometry("200x200")
 top.title("top")
-l1 = tk.Label(top, text="This is top window")
+l1 = tk.Label(top, text="This is top windo3w")
 l1.pack()
 
 l.pack()
