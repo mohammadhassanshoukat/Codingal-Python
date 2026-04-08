@@ -25,38 +25,52 @@ label1.place(relx=0.5, y=340, anchor=CENTER)
 def msg():
     Msgbox = messagebox.showinfo('alert', 'do you want to calculate the demonitation?')
     if Msgbox == 'ok':
-       topwin()
+        topwin()
 
 
-#adding butoons to the main window
+#adding buttons to the main window
 button1 = Button(root, text='Lets get started!', command=msg, bg='brown', fg='white')
-Button.place(x=260, y=360)
+button1.place(x=260, y=360)
 
 
 def topwin():
-    #topw window
+    # top window
     top = Toplevel(root)
-    top.title('Currency Demonitation Calculator')
+    top.title('Currency Demonetization Calculator')
     top.configure(bg='grey')
     top.geometry('600x400')
 
+    label_amount = Label(top, text='Enter amount in rupees:', bg='grey', fg='white', font=('Arial', 12, 'bold'))
+    label_amount.place(x=60, y=40)
 
-    #centering widgets in the top window
-    label.place(x-230, y-50)
-    entry.place(x-200, у-80)
-    btn.place(x-240, y = 120 )
-    lbl.place(x=140, y =170)
+    amount_var = StringVar()
+    entry_amount = Entry(top, textvariable=amount_var, width=20, font=('Arial', 12))
+    entry_amount.place(x=260, y=40)
 
+    result_label = Label(top, text='', bg='grey', fg='white', justify=LEFT, font=('Arial', 11))
+    result_label.place(x=60, y=140)
 
-    l1.place(x=180, y=200)
-    l2.place(x=180, y=230)
-    l3.place(x=180, y=260)
-    
+    def calculate_denomination():
+        try:
+            amount = int(amount_var.get())
+            if amount < 0:
+                raise ValueError
+        except ValueError:
+            messagebox.showerror('Invalid input', 'Please enter a valid positive integer amount.')
+            return
 
-    t1.place(x=270, y=200)
-    t2.place(x=270, y=230)
-    t3.place(x=270, y=260)
-    
+        denominations = [2000, 500, 200, 100, 50, 20, 10, 5, 2, 1]
+        remaining = amount
+        lines = []
+        for denom in denominations:
+            count, remaining = divmod(remaining, denom)
+            lines.append(f'{denom} rupee: {count}')
+
+        result_label.config(text='\n'.join(lines))
+
+    calculate_button = Button(top, text='Calculate', command=calculate_denomination, bg='brown', fg='white')
+    calculate_button.place(x=260, y=90)
+
     top.mainloop()
 
 root.mainloop()
