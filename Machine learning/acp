@@ -1,0 +1,19 @@
+n = int(input("Enter your number: "))
+
+count = 0
+max_count = 0
+
+while n > 0:
+
+    if n % 2 == 1:   # last binary digit is 1
+        count += 1
+
+        if count > max_count:
+            max_count = count
+
+    else:
+        count = 0
+
+    n = n // 2   # move to next binary digit
+
+print("Longest consecutive 1's length:", max_count)
